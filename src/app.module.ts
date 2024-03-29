@@ -6,6 +6,7 @@ import { CompanyModule } from './company/company.module';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
+import { Company } from './company/entities/company.entity';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -14,8 +15,8 @@ import * as dotenv from 'dotenv';
       port: 3306,
       username: 'root',
       password: '',
-      database: process.env.DATABASE,
-      entities: [],
+      database: process.env.DATABASE || 'cv_tet',
+      entities: [Company],
       synchronize: true
   }),
     UserModule,CompanyModule],
