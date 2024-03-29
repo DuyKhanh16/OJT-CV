@@ -7,8 +7,7 @@ import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
 import { User } from './user/entities/user.entity';
-
-// dotenv.config();
+import { Company } from './company/entities/company.entity';
 
 @Module({
   imports: [
@@ -18,14 +17,13 @@ import { User } from './user/entities/user.entity';
       port: 3306,
       username: 'root',
       password: '',
-      database: process.env.DATABASE || 'testojt',
-      entities: [User],
+      database: process.env.DATABASE,
+      entities: [User, Company],
       synchronize: true,
     }),
     UserModule,
     CompanyModule,
   ],
-
   controllers: [AppController],
   providers: [AppService],
 })
