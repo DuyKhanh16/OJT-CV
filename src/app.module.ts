@@ -8,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
 import { User } from './user/entities/user.entity';
 import { Company } from './company/entities/company.entity';
+import { ExcelModule } from './excel/excel.module';
 
 @Module({
   imports: [
@@ -17,12 +18,13 @@ import { Company } from './company/entities/company.entity';
       port: 3306,
       username: 'root',
       password: '',
-      database: process.env.DATABASE,
+      database: 'testojt',
       entities: [User, Company],
       synchronize: true,
     }),
     UserModule,
     CompanyModule,
+    ExcelModule,
   ],
   controllers: [AppController],
   providers: [AppService],
