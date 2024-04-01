@@ -20,7 +20,8 @@ export class UserService {
   }
 
   findAll() {
-    return `This action returns all user`;
+    const users = this.userRepos.find();
+    return users
   }
 
   findOne(id: number) {
